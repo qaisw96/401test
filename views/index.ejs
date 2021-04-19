@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./layouts/head.ejs') %> 
+</head>
+<body>
+    <header>
+        <%- include('./layouts/header.ejs') %> 
+
+        <h1> Total : <%=characters.length  %> </h1>
+    </header>
+    <main>
+
+        <% characters.forEach(character => {%> 
+            <section>
+
+                <h1><%= character.name %> </h1>
+                <h2><%= character.house %> </h2>
+                <p><%= character.patronus %> </p>
+                <p><%= character.alive %> </p>
+    
+                <form action="/favorite-character" method="POST">
+                    <input type="hidden" name="name" value="<%=character.name%> ">
+                    <input type="hidden" name="house" value="<%=character.house%> ">
+                    <input type="hidden" name="patronus" value="<%=character.patronus%> ">
+                    <input type="hidden" name="alive" value="<%=character.alive%> ">
+    
+                    <input type="submit" value="add">
+                </form>
+            </section>
+
+            <% })  %> 
+    </main>
+    
+</body>
+</html>

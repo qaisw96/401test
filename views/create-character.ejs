@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./layouts/head.ejs')  %> 
+</head>
+<body>
+    <header>
+
+        <%- include('./layouts/header.ejs')  %> 
+
+    </header>
+    <main>
+        <form action="/characters/create" method="post">
+            <input type="text"  name="name">
+            <input type="text"  name="house">
+            <input type="text"  name="patronus">
+            <select name="status" id="">
+                <option value="true">alive</option>
+                <option value="false">dead</option>
+            </select>
+
+            <input type="submit" value="create">
+        </form>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./layouts/head.ejs')  %> 
+</head>
+<body>
+    <header>
+
+        <%- include('./layouts/header.ejs')  %> 
+    </header>
+    <main>
+        <% character.forEach(character => { %>
+            <section>
+
+                <p>                
+                    <%= character.name %> 
+                </p>
+                <p>                
+                    <%= character.house %> 
+                </p>
+                <p>                
+                    <%= character.patronus %> 
+                </p>
+                <p>                
+                    <%= character.alive %> 
+                </p>
+                <form action="/character/<%= character.id %>?_method=PUT" method="POST">
+                    <input type="text" name="name" value="<%= character.name %> ">
+                    <input type="text" name="house" value="<%= character.house %> ">
+                    <input type="text" name="patronus" value="<%= character.patronus %> ">
+    
+                    <select name="status">
+                        <% if(character.alive){ %>
+                            <option value="true">Alive</option>
+                            <option value="false">Dead</option>
+                            <%} else {%>
+                                <option value="false">Dead</option>
+                                <option value="true">Alive</option>
+                                <%}%>
+                    </select>
+                    <input type="submit" value="update">
+            </form>
+    
+            <form action="/character/<%= character.id %>?_method=DELETE " method="POST">
+                <input type="submit" value="delete">
+            </form>
+            </section>
+            
+       <%  });  %> 
+    </main>
+    
+</body>
+</html>
